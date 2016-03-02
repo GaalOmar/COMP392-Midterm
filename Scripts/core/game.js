@@ -54,7 +54,7 @@ var game = (function () {
         setupCamera(); // setup the camera
         /* ENTER CODE HERE */
         //Add Ground
-        groundGeometry = new PlaneGeometry(38, 40);
+        groundGeometry = new PlaneGeometry(20, 23);
         groundMaterial = new LambertMaterial({ color: 0x000000 });
         ground = new Mesh(groundGeometry, groundMaterial);
         ground.rotation.x = -0.5 * Math.PI;
@@ -120,11 +120,11 @@ var game = (function () {
     function addControl(controlObject) {
         /* ENTER CODE for the GUI CONTROL HERE */
         // gui.add(controlObject, 'randomColour');
-        gui.add(controlObject, 'rotationSpeedC1', 0.05, 0);
-        gui.add(controlObject, 'rotationSpeedC2', 0.04, -0.04);
-        gui.add(controlObject, 'rotationSpeedC3', 0.06, -0.06);
-        gui.add(controlObject, 'rotationSpeedC4', 0.07, -0.07);
-        gui.add(controlObject, 'rotationSpeedC5', 0.08, -0.08);
+        gui.add(controlObject, 'rotationSpeedC1', -0.05, 0.05);
+        gui.add(controlObject, 'rotationSpeedC2', -0.04, 0.04);
+        gui.add(controlObject, 'rotationSpeedC3', -0.06, 0.06);
+        gui.add(controlObject, 'rotationSpeedC4', -0.07, 0.07);
+        gui.add(controlObject, 'rotationSpeedC5', -0.08, 0.08);
     }
     function addStatsObject() {
         stats = new Stats();
