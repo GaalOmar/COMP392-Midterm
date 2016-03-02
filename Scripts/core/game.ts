@@ -10,9 +10,9 @@
     Program description: Creating a tapered tower with colors
     Revision History:
     Commit 1: Created the visual code file - Intial Commit
-    Commit 2: Updated the visual code file by adding bits of code
-    Commit 3: Followed the BoilerPlare example from class
-    Commit 3: Followed the BoilerPlare example from class
+    Commit 2: Added Cubes
+    Commit 3: Added rotation to the cubes
+    Commit 4: Finial Commit
     
     
 */
