@@ -2,6 +2,21 @@
 
 // MAIN GAME FILE
 
+/*
+    Name: Ga-alo Omar 300175123
+    Source File Name: Advanced Graphics - Midterm 
+    Last Modified by: Ga-alo Omar
+    Date last Modified: Mar 3, 2016
+    Program description: Creating a tapered tower with colors
+    Revision History:
+    Commit 1: Created the visual code file - Intial Commit
+    Commit 2: Updated the visual code file by adding bits of code
+    Commit 3: Followed the BoilerPlare example from class
+    Commit 3: Followed the BoilerPlare example from class
+    
+    
+*/
+
 // THREEJS Aliases
 import Scene = THREE.Scene;
 import Renderer = THREE.WebGLRenderer;
@@ -66,14 +81,16 @@ var game = (() => {
         /* ENTER CODE HERE */
         //Add Ground
         groundGeometry = new PlaneGeometry(20,23);
-        groundMaterial = new LambertMaterial({color: 0x000000});
+        groundMaterial = new LambertMaterial({color: 0xf2ede4});
         ground = new Mesh(groundGeometry, groundMaterial);
+        ground .castShadow = true;
+        ground .receiveShadow = true;
         ground.rotation.x = -0.5 * Math.PI;
         scene.add(ground);
         console.log("Added ground...");
         
         //Add Cube1
-        cube1 = new Mesh(new CubeGeometry(6,2, 4), new LambertMaterial({ color: 0xF8BA8B }));
+        cube1 = new Mesh(new CubeGeometry(6,2, 5), new LambertMaterial({color: (Math.random() * 0xFFFFFF << 0)}));
         cube1 .castShadow = true;
         cube1 .receiveShadow = true;
         cube1 .position.x = 0.5;
@@ -81,30 +98,38 @@ var game = (() => {
         scene.add(cube1);
         
         //Add Cube2
-        cube2 = new Mesh(new CubeGeometry(5,2, 4), new LambertMaterial({ color: 0xffcc06 }));
+        cube2 = new Mesh(new CubeGeometry(4,2, 4), new LambertMaterial({color: (Math.random() * 0xFFFFFF << 0)}));
+        cube2 .castShadow = true;
+        cube2 .receiveShadow = true;
         cube2 .position.x = 0.5;
         cube2 .position.y = 2.5;
         cube2 .position.z = 0.5;
         scene.add(cube2);
         
         //Add Cube3
-        cube3 = new Mesh(new CubeGeometry(4,2, 2), new LambertMaterial({ color: 0x1b3690 }));
+        cube3 = new Mesh(new CubeGeometry(3,2, 2), new LambertMaterial({color: (Math.random() * 0xFFFFFF << 0)}));
+        cube3 .castShadow = true;
+        cube3 .receiveShadow = true;
         cube3 .position.x = 0.5;
         cube3 .position.y = 4.5;
         cube3 .position.z = 0.5;
         scene.add(cube3);
         
         //Add Cube4
-        cube4 = new Mesh(new CubeGeometry(3,2, 2), new LambertMaterial({ color: 0xb94141 }));
+        cube4 = new Mesh(new CubeGeometry(2,2, 2), new LambertMaterial({color: (Math.random() * 0xFFFFFF << 0)}));
+        cube4 .castShadow = true;
+        cube4 .receiveShadow = true;
         cube4 .position.x = 0.5;
         cube4 .position.y = 6.5;
         cube4 .position.z = 0.5;
         scene.add(cube4);
         
         //Add Cube5
-        cube5 = new Mesh(new CubeGeometry(2,2, 2), new LambertMaterial({ color: 0x800000 }));
+        cube5 = new Mesh(new CubeGeometry(1,1,1), new LambertMaterial({color: (Math.random() * 0xFFFFFF << 0)}));
+        cube5 .castShadow = true;
+        cube5 .receiveShadow = true;
         cube5 .position.x = 0.5;
-        cube5 .position.y = 8.5;
+        cube5 .position.y = 8;
         cube5 .position.z = 0.5;
         scene.add(cube5);
         
@@ -120,7 +145,7 @@ var game = (() => {
 	
         // Add a SpotLight to the scene
         spotLight = new SpotLight(0xffffff);
-        spotLight.position.set(-40, 60, 10);
+        spotLight.position.set(-40, 60, -20);
         //spotLight.position.set(5.6, 23.1, 5.4);
         // spotLight.rotation.set(-0.8, 42.7, 19.5);
         spotLight.castShadow = true;
@@ -143,7 +168,6 @@ var game = (() => {
 
     function addControl(controlObject: Control): void {
         /* ENTER CODE for the GUI CONTROL HERE */
-       // gui.add(controlObject, 'randomColour');
         gui.add(controlObject, 'rotationSpeedC1', -0.05, 0.05);
         gui.add(controlObject, 'rotationSpeedC2', -0.04, 0.04);
         gui.add(controlObject, 'rotationSpeedC3', -0.06, 0.06);
@@ -198,7 +222,7 @@ var game = (() => {
         console.log("Finished setting up Camera...");
     }
 
-    window.onload = init;
+   window.onload = init;
 
     return {
         scene: scene

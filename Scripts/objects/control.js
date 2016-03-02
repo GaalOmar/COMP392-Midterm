@@ -11,14 +11,6 @@ var objects;
             this.rotationSpeedC4 = rotationSpeedC4;
             this.rotationSpeedC5 = rotationSpeedC5;
         }
-        //PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++
-        Control.prototype.randomColour = function () {
-            cube1.material.setValues({ color: (Math.random() * 0xFFFFFF << 0) });
-            cube2.material.setValues({ color: (Math.random() * 0xFFFFFF << 0) });
-            cube3.material.setValues({ color: (Math.random() * 0xFFFFFF << 0) });
-            cube4.material.setValues({ color: (Math.random() * 0xFFFFFF << 0) });
-            cube5.material.setValues({ color: (Math.random() * 0xFFFFFF << 0) });
-        };
         return Control;
     }());
     objects.Control = Control;

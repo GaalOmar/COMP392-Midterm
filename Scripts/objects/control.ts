@@ -19,12 +19,6 @@ module objects {
         }
         
         //PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++
-       public randomColour(): void {
-            cube1.material.setValues({color: (Math.random() * 0xFFFFFF << 0)});
-            cube2.material.setValues({color: (Math.random() * 0xFFFFFF << 0)});
-            cube3.material.setValues({color: (Math.random() * 0xFFFFFF << 0)});
-            cube4.material.setValues({color: (Math.random() * 0xFFFFFF << 0)});
-            cube5.material.setValues({color: (Math.random() * 0xFFFFFF << 0)});
-        } 
+      
     }
 }
