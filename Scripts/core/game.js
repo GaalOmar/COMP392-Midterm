@@ -10,7 +10,7 @@
     Commit 1: Created the visual code file - Intial Commit
     Commit 2: Added Cubes
     Commit 3: Added rotation to the cubes
-    Commit 4: Finial Commit
+    Commit 4: Final Commit
     
     
 */
