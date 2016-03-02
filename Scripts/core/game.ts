@@ -41,6 +41,18 @@ var game = (() => {
     var control: Control;
     var gui: GUI;
     var stats: Stats;
+    var axes: AxisHelper;
+    var ambientLight: AmbientLight;
+    var spotLight: SpotLight;
+    var groundMaterial: LambertMaterial;
+    var groundGeometry: PlaneGeometry;
+    var ground: Mesh;
+    var cube1: Mesh 
+    var cube2: Mesh;
+    var cube3: Mesh;
+    var cube4: Mesh;
+    var cube5: Mesh;
+   
 
     function init() {
         // Instantiate a new Scene object
@@ -52,11 +64,72 @@ var game = (() => {
 
 
         /* ENTER CODE HERE */
+        //Add Ground
+        groundGeometry = new PlaneGeometry(38,40);
+        groundMaterial = new LambertMaterial({color: 0x000000});
+        ground = new Mesh(groundGeometry, groundMaterial);
+        ground.rotation.x = -0.5 * Math.PI;
+        scene.add(ground);
+        console.log("Added ground...");
         
- 
+        //Add Cube1
+        cube1 = new Mesh(new CubeGeometry(6,2, 4), new LambertMaterial({ color: 0xF8BA8B }));
+        cube1 .castShadow = true;
+        cube1 .receiveShadow = true;
+        cube1 .position.x = 0.5;
+        cube1 .position.y = 0.5;
+        scene.add(cube1);
+        
+        //Add Cube2
+        cube2 = new Mesh(new CubeGeometry(5,2, 4), new LambertMaterial({ color: 0xffcc06 }));
+        cube2 .position.x = 0.5;
+        cube2 .position.y = 2.5;
+        cube2 .position.z = 0.5;
+        scene.add(cube2);
+        
+        //Add Cube3
+        cube3 = new Mesh(new CubeGeometry(4,2, 2), new LambertMaterial({ color: 0x1b3690 }));
+        cube3 .position.x = 0.5;
+        cube3 .position.y = 4.5;
+        cube3 .position.z = 0.5;
+        scene.add(cube3);
+        
+        //Add Cube4
+        cube4 = new Mesh(new CubeGeometry(3,2, 2), new LambertMaterial({ color: 0xb94141 }));
+        cube4 .position.x = 0.5;
+        cube4 .position.y = 6.5;
+        cube4 .position.z = 0.5;
+        scene.add(cube4);
+        
+        //Add Cube5
+        cube5 = new Mesh(new CubeGeometry(2,2, 2), new LambertMaterial({ color: 0x800000 }));
+        cube5 .position.x = 0.5;
+        cube5 .position.y = 8.5;
+        cube5 .position.z = 0.5;
+        scene.add(cube5);
+        
+        //axes helper
+        axes = new AxisHelper(20);
+        ground.add(axes);
+        console.log("Added Axis Helper to scene...");
+        
+         // Add an AmbientLight to the scene
+        ambientLight = new AmbientLight(0x404040);
+        scene.add(ambientLight);
+        console.log("Added an Ambient Light to Scene....");
+	
+        // Add a SpotLight to the scene
+        spotLight = new SpotLight(0xffffff);
+        spotLight.position.set(-40, 60, 10);
+        //spotLight.position.set(5.6, 23.1, 5.4);
+        // spotLight.rotation.set(-0.8, 42.7, 19.5);
+        spotLight.castShadow = true;
+        scene.add(spotLight);
+        console.log("Added a SpotLight Light to Scene...");
+       
         // add controls
         gui = new GUI();
-        control = new Control();
+        control = new Control(0, 0, 0,0,0);
         addControl(control);
 
         // Add framerate stats
@@ -70,6 +143,13 @@ var game = (() => {
 
     function addControl(controlObject: Control): void {
         /* ENTER CODE for the GUI CONTROL HERE */
+       // gui.add(controlObject, 'randomColour');
+        gui.add(controlObject, 'rotationSpeedC1', 0.05, 0);
+        gui.add(controlObject, 'rotationSpeedC2', 0.04, -0.04);
+        gui.add(controlObject, 'rotationSpeedC3', 0.06, -0.06);
+        gui.add(controlObject, 'rotationSpeedC4', 0.07, -0.07);
+        gui.add(controlObject, 'rotationSpeedC5', 0.08, -0.08);
+
     }
 
     function addStatsObject() {
@@ -85,6 +165,11 @@ var game = (() => {
     function gameLoop(): void {
         stats.update();
         
+        cube1.rotation.y += control.rotationSpeedC1;
+        cube2.rotation.y += control.rotationSpeedC2;
+        cube3.rotation.y += control.rotationSpeedC3;
+        cube4.rotation.y += control.rotationSpeedC4;
+        cube5.rotation.y += control.rotationSpeedC5;
         // render using requestAnimationFrame
         requestAnimationFrame(gameLoop);
 	
